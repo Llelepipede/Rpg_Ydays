@@ -9,14 +9,19 @@ type Carte struct {
 
 // terrain
 type Damier struct {
+	Case [10][10]Case
 }
 
 // chacun des pions de chacuns des joueurs
-type Pion struct {
+type Case struct {
+	Joueur  bool
+	Vide    bool
+	Is_dame bool
 }
 
 // je n'ai besoin que de ca pour lancer la partie
 type Partie struct {
+	Damier Damier
 }
 
 func (carte Carte) Affichage() string {
@@ -26,3 +31,5 @@ func (carte Carte) Affichage() string {
 
 	return ret
 }
+
+func (damier Damier) Affichage_Damier() string

@@ -17,5 +17,5 @@ func main() {
 	// 	return
 	// }
 
-	fmt.Printf("%v\n", rpg.C_Damier())
+	fmt.Printf("%v\n", rpg.C_Damier().Affichage_Damier())
 }

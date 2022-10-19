@@ -32,4 +32,23 @@ func (carte Carte) Affichage() string {
 	return ret
 }
 
-func (damier Damier) Affichage_Damier() string
+func (damier Damier) Affichage_Damier() string {
+	var ret string
+
+	for _, v := range damier.Case {
+		for _, w := range v {
+			if w.Vide {
+				ret += " _"
+			} else {
+				if w.Joueur {
+					ret += " O"
+				} else {
+					ret += " X"
+				}
+			}
+		}
+		ret += "\n"
+	}
+
+	return ret
+}

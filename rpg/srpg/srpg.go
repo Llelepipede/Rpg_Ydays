@@ -1,5 +1,7 @@
 package srpg
 
+import "strconv"
+
 type Carte struct {
 	Valeur  string
 	Couleur string
@@ -34,9 +36,12 @@ func (carte Carte) Affichage() string {
 
 func (damier Damier) Affichage_Damier() string {
 	var ret string
+	ret += "   0 1 2 3 4 5 6 7 8 9\n"
 
-	for _, v := range damier.Case {
+	for i, v := range damier.Case {
+		ret += strconv.Itoa(i) + " "
 		for _, w := range v {
+
 			if w.Vide {
 				ret += " _"
 			} else {

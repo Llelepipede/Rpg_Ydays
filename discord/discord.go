@@ -6,6 +6,7 @@ import (
 	"Prog_Lud/rpg/srpg"
 	"fmt"
 	"log"
+	"strconv"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -77,7 +78,30 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 
 	}
+	// move 1.5  ["move","1.5"]
+	// move 1.5 1.7
 	if StartWith(m.Content, "move") {
+		new_text := config.Split(m.Content)
+		// s.ChannelMessageSend(m.ChannelID, "```"+damier.Affichage_Damier()+"```")
+
+		x, _ := strconv.Atoi(string(new_text[1][0]))
+		y, _ := strconv.Atoi(string(new_text[1][2]))
+
+		if damier.Case[y][x].Vide {
+			s.ChannelMessageSend(m.ChannelID, "vide")
+
+		} else {
+			s.ChannelMessageSend(m.ChannelID, "plein")
+			x2, _ := strconv.Atoi(string(new_text[2][0]))
+			y2, _ := strconv.Atoi(string(new_text[2][2]))
+			damier.Case[y][x].Vide = true
+			damier.Case[y2][x2].Vide = false
+			damier.Case[y2][x2].Joueur = damier.Case[y][x].Joueur
+
+			s.ChannelMessageSend(m.ChannelID, "```"+damier.Affichage_Damier()+"```")
+		}
+
+		damier.Case[y][x].Vide
 
 	}
 

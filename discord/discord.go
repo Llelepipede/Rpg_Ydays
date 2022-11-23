@@ -101,8 +101,6 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 			s.ChannelMessageSend(m.ChannelID, "```"+damier.Affichage_Damier()+"```")
 		}
 
-		damier.Case[y][x].Vide
-
 	}
 
 	// s.ChannelMessageSend(m.ChannelID, m.Author.Mention())
